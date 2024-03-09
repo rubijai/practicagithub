@@ -1,0 +1,47 @@
+def print_hi(name):
+    name = 'Jaime'
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+    def snail(array):
+        if array == []:
+            return []
+        l = len(array)
+        snail_array = []
+        while l > 1:
+            for i in range(l):
+                snail_array.append(array[0][i])
+            array = array[1::]
+            for j in range(l - 1):
+                snail_array.append(array[j][l - 1])
+                y = array[j]
+                y.remove(array[j][l - 1])
+            for i in range(-1, -l, -1):
+                snail_array.append(array[l - 2][i])
+            array = array[:l - 2:]
+            for j in range(-1, -l + 1, -1):
+                snail_array.append(array[j][0])
+                y = array[j]
+                y.remove(array[j][0])
+                l = len(array)
+                if l <= 1:
+                    snail_array.append(array[0][0])
+                    l = -1
+        return snail_array
+
+    array = [[1, 2, 3, 30, 300],
+             [8, 9, 4, 40, 400],
+             [7, 6, 5, 50, 500],
+             [10, 11, 12, 13, 130],
+             [1, 2, 3, 4, 5]]
+
+    '''array = [[1, 2, 3],
+             [8, 9, 4],
+             [7, 6, 5]]'''
+
+    print(snail(array))
+    # Resultado: [1, 2, 3, 30, 300, 400, 500, 130, 5, 4, 3, 2, 1, 10, 7, 8, 9, 4, 40, 50, 13, 12, 11, 6, 5]
+
+if __name__ == '__main__':
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
